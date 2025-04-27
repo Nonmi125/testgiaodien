@@ -124,4 +124,4 @@ if __name__ == "__main__":
         if login_success:
             print("Đăng nhập thành công, chuyển sang giao diện chính / chờ 10s")
         else:
-            print("Chưa đăng nhập hoặc bị sai tài khoản")
+            print("Chưa đăng nhập hoặc bị sai tài khoản"
