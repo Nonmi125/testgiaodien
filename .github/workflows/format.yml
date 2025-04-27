@@ -1,0 +1,32 @@
+name: Format code with Prettier
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Lấy code về
+        uses: actions/checkout@v2
+
+      - name: Cài Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Cài Prettier
+        run: npm install --save-dev prettier
+
+      - name: Format code
+        run: npx prettier . --write
+
+      - name: Commit lại nếu có thay đổi
+        run: |
+          git config --global user.name "Format Bot"
+          git config --global user.email "bot@example.com"
+          git add .
+          git commit -m "🤖 Auto-format code" || echo "No changes"
+          git push || echo "Nothing to push"
